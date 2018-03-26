@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/start/start",
+    "pages/house/house",
+    "pages/logs/logs",
+    "pages/upload/upload" 
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#69C3AA",
+    "navigationBarTitleText": "时光小屋",
+    "navigationBarTextStyle": "white"
+  }
+ 
+}

@@ -1,0 +1,106 @@
+/**index.wxss**/
+.container {
+  background-color: #F2f2f2;
+  min-height: 100%;
+}
+.swiper {
+  width: 100%;
+  height: 500rpx;
+  background-color: #F2f2f2;
+}
+.swiper-item image{
+    width: 100%;
+    height: 500rpx;
+}
+.slide-image{
+    width: 100%;
+    height: 500rpx;
+}
+.add {
+  z-index: 11;
+  position: fixed;
+  bottom: 120rpx;
+  right: 40rpx;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.addItem {
+  margin-top: 30rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  /*position: fixed;*/
+  background-color: #fff;
+  text-align: center;
+  background-size: 50rpx 50rpx;
+  background-repeat: no-repeat;
+  background-position: 15rpx 15rpx;
+  box-shadow: 8rpx 8rpx 20rpx rgba(0, 0, 0, 0.27);
+}
+
+.addIcon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 60rpx;
+  background-color: #69C3AA;
+  text-align: center;
+  color: #fff;
+  line-height: 100rpx;
+  font-size: 60rpx;
+  box-shadow: 8rpx 8rpx 20rpx rgba(0, 0, 0, 0.27);
+  /*font-weight: bold;*/
+}
+
+.addPhoto {
+  background-image: url(http://otdcrqlvr.bkt.clouddn.com/%E5%9B%BE%E7%89%87.png);
+}
+
+.addVideo {
+  background-image: url(http://otdcrqlvr.bkt.clouddn.com/%E8%A7%86%E5%B1%8F.png);
+}
+
+.addMessage {
+  background-image: url(http://otdcrqlvr.bkt.clouddn.com/%E7%95%99%E8%A8%80.png);
+}
+
+.no-more-photos {
+  text-align: center;
+  font-size: 24rpx;
+  padding-bottom: 48rpx;
+  color: #999;
+}
+.photos-container{
+  display: flex;
+  justify-content: space-between;  
+  flex-wrap:wrap;
+  box-sizing: content-box;
+  padding: 24rpx;
+}
+.photos-box{
+  width: 339rpx;
+  height: 472rpx;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+}
+.photos-box .img-box{
+  width: 339rpx;
+  height: 339rpx;
+  overflow: hidden;
+}
+.photos-box .img-box image{
+   width: 339rpx;
+   height: 339rpx;
+}
+.photos-box .goods-title{
+  width: 280rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 24rpx;
+  padding: 24rpx 0 0rpx 0;
+  color:#000;
+  margin-left: 24rpx;
+}

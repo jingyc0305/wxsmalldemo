@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "朵朵时光",
+  "tabBar": {
+    "list": [
+      {
+        "text": "小屋"
+      },
+      {
+        "text": "我"
+      }
+    ]
+  }
+}

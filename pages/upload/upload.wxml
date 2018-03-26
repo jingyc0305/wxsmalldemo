@@ -1,0 +1,61 @@
+<!--pages/upload/upload.wxml-->
+ <view class="swiper-container">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+<view class="container1">
+
+ <view class="item1 i3">
+ 1
+ </view>
+
+<view class="item1">
+ 2
+ </view>
+
+ <view class="item1">
+ 3
+ </view>
+
+ <view class="item1">
+ 4
+ </view>
+  <view class="item1">
+ 5
+ </view>
+  <view class="item1">
+ 6
+ </view>
+  <view class="item1">
+ 7
+ </view>
+  <view class="item1">
+ 8
+ </view>
+  <view class="item1">
+ 9
+ </view>
+  <view class="item1">
+ 10
+ </view>
+  <view class="item1">
+ 11
+ </view>
+  <view class="item1">
+ 12
+ </view>
+ <view class="item1">
+ 13
+ </view>
+  <view class="item1">
+ 14
+ </view>
+  <view class="item1">
+ 15
+ </view>
+</view>

@@ -1,0 +1,17 @@
+<!--pages/house/house.wxml-->
+<view class='albumlist'>
+  <view class="Grid">
+    <view class="section section_gap" wx:for="{{array}}" wx:for-item="item">
+      <view class="section__ctn">
+        <image class="photo_item" style="width:100px; height:160px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+        <view class="phototitle">{{item.text}}</view>
+        <image class="photo_item" style="width:100px; height:160px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+        <view class="phototitle">{{item.text}}</view>
+        <image class="photo_item" style="width:100px; height:160px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+        <view class="phototitle">{{item.text}}</view>
+        <image class="photo_item" style="width:100px; height:160px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+        <view class="phototitle">{{item.text}}</view>
+      </view>
+    </view>
+  </view>
+</view>
