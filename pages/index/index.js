@@ -4,15 +4,22 @@ var app = getApp()
 Page({
   data: {
     imgUrls: [
-      'http://welove.b0.upaiyun.com/562949969191531/tl/8B5FFA37_huge',
-      'http://welove.b0.upaiyun.com/562949969191510/tl/9077CEBC_huge',
-      'http://welove.b0.upaiyun.com/562949969191531/tl/8B5FFA37_huge'
+      'http://www.wanandroid.com/blogimgs/50c115c2-cf6c-4802-aa7b-a4334de444cd.png',
+      'http://www.wanandroid.com/blogimgs/62c1bd68-b5f3-4a3c-a649-7ca8c7dfabe6.png',
+      'http://www.wanandroid.com/blogimgs/ffb61454-e0d2-46e7-bc9b-4f359061ae20.png',
+      'http://www.wanandroid.com/blogimgs/fb0ea461-e00a-482b-814f-4faca5761427.png',
+      'http://www.wanandroid.com/blogimgs/ab17e8f9-6b79-450b-8079-0f2287eb6f0f.png',
+      'http://www.wanandroid.com/blogimgs/84810df6-adf1-45bc-b3e2-294fa4e95005.png',
+      'http://www.wanandroid.com/blogimgs/90cf8c40-9489-4f9d-8936-02c9ebae31f0.png',
+      'http://www.wanandroid.com/blogimgs/acc23063-1884-4925-bdf8-0b0364a7243e.png'
     ],
     mode:'aspectFill',
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
-    duration: 1000
+    duration: 1000,
+    artical_pageindex:'0',
+    articals:[]
   },
   //事件处理函数
   goToHome: function () {
@@ -27,19 +34,24 @@ Page({
   },
   onLoad: function () {
     console.log('onLoad')
-    //获取相册列表
+    var artical_pageindex = '0'
+    var that = this
+    wx.showNavigationBarLoading()
+    //获取文章列表
     wx.request({
-      url: 'http://api.welove520.com/v5/album/list',//http://api.welove520.com/v5/album/list
+      url: 'http://www.wanandroid.com/article/list/' + artical_pageindex +'/json',
       data: {
-        access_token: '562949969191531-17ca21e7ed0617489c',
-        sig: 'Td3d9Fd8ni6PaQRvYOadjLZj1P0=',
-        count: "20"
       },
+      method:'GET',
       header: {
-        'content-type': 'application/x-www-form-urlencoded'//application/x-www-form-urlencoded
+        'content-type': 'application/json'
       },
       success: function (res) {
+        wx.hideNavigationBarLoading()
         console.log(res.data)
+        that.setData({
+           articals: res.data.data.datas
+        })
       }
     })
   },

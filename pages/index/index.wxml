@@ -3,13 +3,23 @@
   <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{imgUrls}}">
       <swiper-item>
-        <image src="{{item}}" mode="{{item.mode}}" class="slide-image" style='scaleToFill'/>
+        <image src="{{item}}" mode="{{item.mode}}" class="slide-image" />
       </swiper-item>
     </block>
   </swiper>
 </view>
+<view class="container artical-list">
+  <block wx:for-items="{{articals}}" wx:for-item="artical" wx:key="*this">
+      <text class="artical-title">{{artical.title}}</text>
+    <view class='artical-subtitle'>
+      <text class="artical-subtitle">{{artical.author}}</text>
+      <text class="artical-subtitle">{{artical.superChapterName}}</text>
+      <text class="artical-subtitle">{{artical.niceDate}}</text>
+    </view>
+  </block>
+</view>
 
-<view class="photos-container">
+<!-- <view class="photos-container">
   <view class="photo-box" wx:for-items="{{photo}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
     <view class="img-box">
       <image src="{{item.pic}}_m" class="image" mode="aspectFill" lazy-load="true" />
@@ -18,11 +28,11 @@
     <view style='display:flex;'>
     </view>
   </view>
-</view>
-<view class="add">
+</view> -->
+<!-- <view class="add">
   <view class="addItem addIcon" bindtap="showAddItem">+</view>
   <view class="addItem addPhoto" bindtap='didPressChooesImage' wx:if="{{addVlue}}"></view>
   <view class="addItem addVideo" bindtap='didPressChooesVideo' wx:if="{{addVlue}}"></view>
   <view class="addItem addMessage" bindlongtap='clearStorage' wx:if="{{addVlue}}"></view>
-</view>
+</view> -->
 <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-photos">没有更多啦</view>

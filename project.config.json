@@ -4,7 +4,8 @@
 		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
-		"minified": true
+		"minified": true,
+		"newFeature": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.94",
