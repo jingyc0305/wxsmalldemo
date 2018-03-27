@@ -3,23 +3,18 @@
 var app = getApp()
 Page({
   data: {
-    imgUrls: [
-      'http://www.wanandroid.com/blogimgs/50c115c2-cf6c-4802-aa7b-a4334de444cd.png',
-      'http://www.wanandroid.com/blogimgs/62c1bd68-b5f3-4a3c-a649-7ca8c7dfabe6.png',
-      'http://www.wanandroid.com/blogimgs/ffb61454-e0d2-46e7-bc9b-4f359061ae20.png',
-      'http://www.wanandroid.com/blogimgs/fb0ea461-e00a-482b-814f-4faca5761427.png',
-      'http://www.wanandroid.com/blogimgs/ab17e8f9-6b79-450b-8079-0f2287eb6f0f.png',
-      'http://www.wanandroid.com/blogimgs/84810df6-adf1-45bc-b3e2-294fa4e95005.png',
-      'http://www.wanandroid.com/blogimgs/90cf8c40-9489-4f9d-8936-02c9ebae31f0.png',
-      'http://www.wanandroid.com/blogimgs/acc23063-1884-4925-bdf8-0b0364a7243e.png'
-    ],
-    mode:'aspectFill',
+    imgUrls: [],
+    mode: 'aspectFill',
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
     duration: 1000,
-    artical_pageindex:'0',
-    articals:[]
+    articals: [],
+    curPage: 0,
+    perPageSize: 10,
+    pageCount: 10,
+    isHideLoadMore: false,
+    loadingMoreHidden: true
   },
   //事件处理函数
   goToHome: function () {
@@ -34,26 +29,29 @@ Page({
   },
   onLoad: function () {
     console.log('onLoad')
-    var artical_pageindex = '0'
-    var that = this
     wx.showNavigationBarLoading()
+    this.getBanners()
+    var curPage = 0
     //获取文章列表
-    wx.request({
-      url: 'http://www.wanandroid.com/article/list/' + artical_pageindex +'/json',
-      data: {
-      },
-      method:'GET',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        wx.hideNavigationBarLoading()
-        console.log(res.data)
-        that.setData({
-           articals: res.data.data.datas
-        })
-      }
+    this.getArticals(curPage)
+  },
+  onPullDownRefresh: function () {
+    this.data.curPage = 0
+    this.getArticals(this.data.curPage)
+    console.log('下拉刷新')
+  },
+  onReachBottom: function () {
+    console.log('加载更多')
+    if (!this.data.loadingMoreHidden) {
+
+    } else {
+      this.getArticals(this.data.curPage)
+    }
+    this.setData({
+      loadingMoreHidden: true
     })
+    this.getArticals(curPage)
+
   },
   showAddItem: function () {
     this.setData({
@@ -61,6 +59,70 @@ Page({
     })
 
   },
- 
-  
+  getArticals: function (artical_pageindex) {
+    console.log('====getArticals=====' + artical_pageindex)
+    var that = this
+    wx.request({
+      url: 'http://www.wanandroid.com/article/list/' + artical_pageindex + '/json',
+
+      data: {
+        //curpage: that.data.curPage
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log('====url=====' + url),
+          wx.stopPullDownRefresh()
+        that.setData({
+          perPageSize: res.data.data.size,
+          curPage: res.data.data.curPage,
+          pageCount: res.data.data.pageCount
+        })
+        var articalsTemp = that.data.datas.datas
+
+        console.log('res.errorCode == 0')
+        if (that.data.curPage == 0) {
+          articalsTemp = []
+        }
+        var articals = res.data.data.datas
+        if (articals.length < that.data.perPageSize) {
+          console.log('articals.length < that.data.perPageSize')
+          that.setData({
+            articals: articalsTemp.concat(articals),
+            loadingMoreHidden: true
+          })
+        } else {
+          console.log('articals.length > that.data.perPageSize')
+          that.setData({
+            articals: articalsTemp.concat(articals),
+            loadingMoreHidden: false,
+            curPage: that.data.curPage + 1
+          })
+        }
+
+
+      }
+    })
+  },
+  getBanners: function () {
+    var that = this
+    wx.request({
+      url: 'http://www.wanandroid.com/banner/json',
+      data: {
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        wx.stopPullDownRefresh()
+        that.setData({
+          imgUrls: res.data.data
+        })
+      }
+    })
+  }
+
 })
