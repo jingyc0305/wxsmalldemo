@@ -2,9 +2,12 @@
   "pages": [
     "pages/index/index",
     "pages/start/start",
-    "pages/house/house",
+    "pages/nav/nav",
+    "pages/project/project",
     "pages/logs/logs",
-    "pages/upload/upload" 
+    "pages/tool/tool",
+    "pages/mine/mine",
+    "pages/index-detail/index-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -14,6 +17,40 @@
     "enablePullDownRefresh": true,
     "onReachBottomDistance": true,
     "backgroundColor": "#69C3AA"
+  },
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "pages/images/nav/home_normal.png",
+        "selectedIconPath": "pages/images/nav/home_select.png"
+      },
+      {
+        "pagePath": "pages/nav/nav",
+        "text": "导航",
+        "iconPath": "pages/images/nav/nav_normal.png",
+        "selectedIconPath": "pages/images/nav/nav_select.png"
+      },
+      {
+        "pagePath": "pages/project/project",
+        "text": "项目",
+        "iconPath": "pages/images/nav/project_normal.png",
+        "selectedIconPath": "pages/images/nav/project_select.png"
+      },
+      {
+        "pagePath": "pages/tool/tool",
+        "text": "工具",
+        "iconPath": "pages/images/nav/tool_normal.png",
+        "selectedIconPath": "pages/images/nav/tool_select.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我",
+        "iconPath": "pages/images/nav/mine_normal.png",
+        "selectedIconPath": "pages/images/nav/mine_select.png"
+      }
+    ]
   }
- 
 }

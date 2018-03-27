@@ -10,7 +10,7 @@ Page({
     interval: 3000,
     duration: 1000,
     articals: [],
-    curPage: 0,
+    curPage: 1,
     perPageSize: 10,
     pageCount: 10,
     isHideLoadMore: false,
@@ -31,13 +31,14 @@ Page({
     console.log('onLoad')
     wx.showNavigationBarLoading()
     this.getBanners()
+    //默认加载第0页
     var curPage = 0
     //获取文章列表
     this.getArticals(curPage)
   },
   onPullDownRefresh: function () {
     this.data.curPage = 0
-    this.getArticals(this.data.curPage)
+    this.getArticals(0)
     console.log('下拉刷新')
   },
   onReachBottom: function () {
@@ -50,7 +51,7 @@ Page({
     this.setData({
       loadingMoreHidden: true
     })
-    this.getArticals(curPage)
+    this.getArticals(this.data.curPage)
 
   },
   showAddItem: function () {
@@ -60,44 +61,40 @@ Page({
 
   },
   getArticals: function (artical_pageindex) {
-    console.log('====getArticals=====' + artical_pageindex)
     var that = this
     wx.request({
       url: 'http://www.wanandroid.com/article/list/' + artical_pageindex + '/json',
 
       data: {
-        //curpage: that.data.curPage
+        
       },
       method: 'GET',
       header: {
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log('====url=====' + url),
-          wx.stopPullDownRefresh()
+        wx.hideNavigationBarLoading()
         that.setData({
           perPageSize: res.data.data.size,
           curPage: res.data.data.curPage,
           pageCount: res.data.data.pageCount
         })
-        var articalsTemp = that.data.datas.datas
-
-        console.log('res.errorCode == 0')
-        if (that.data.curPage == 0) {
+        var articalsTemp = that.data.articals
+        if (that.data.curPage == 1) {
           articalsTemp = []
         }
         var articals = res.data.data.datas
         if (articals.length < that.data.perPageSize) {
-          console.log('articals.length < that.data.perPageSize')
+          console.log('没有更多了')
           that.setData({
             articals: articalsTemp.concat(articals),
-            loadingMoreHidden: true
+            loadingMoreHidden: false
           })
         } else {
-          console.log('articals.length > that.data.perPageSize')
+          console.log('有更多可加载')
           that.setData({
             articals: articalsTemp.concat(articals),
-            loadingMoreHidden: false,
+            loadingMoreHidden: true,
             curPage: that.data.curPage + 1
           })
         }
