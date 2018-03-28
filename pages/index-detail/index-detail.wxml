@@ -1,2 +1,4 @@
 <!--pages/index-detail/index-detail.wxml-->
-<text>pages/index-detail/index-detail.wxml</text>
+<web-view class='artical_detail' src="{{artical_link}}">
+
+</web-view>

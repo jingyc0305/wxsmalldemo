@@ -5,21 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
-  array:[{
-    mode: 'scaleToFill',
-    text: '2018年03月23日'
-  }],
-  src: '../resources/photos/photo.jpg'
+    tabs: [],
+    //navs:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this
+    //获取标签以及标签内数据
+    //this.getTabDatas()
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -67,5 +64,29 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  //事件响应============
+  //获取tab以及tab数据
+  getTabDatas: function(){
+    var that = this
+    wx.request({
+      url: 'http://www.wanandroid.com/navi/json',
+      data: {
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success:function(res){
+        var tabs = [];
+        for (var i = 0; i < res.data.data.length; i++) {
+          tabs.push(res.data.data[i]);
+        }
+        that.setData({
+          tabs: tabs
+        })
+      }
+    })
   }
+
 })

@@ -11,25 +11,25 @@ Page({
     duration: 1000,
     articals: [],
     curPage: 1,
-    perPageSize: 10,
-    pageCount: 10,
+    perPageSize: 20,
+    pageCount: 59,
     isHideLoadMore: false,
     loadingMoreHidden: true
   },
-  //事件处理函数
-  goToHome: function () {
+  //进入文章详细页面
+  goToArticalDetail: function (e) {
+    var that = this
+    var item_index = parseInt(e.currentTarget.dataset.index)
+    console.log("item_index = " + item_index)
     wx.navigateTo({
-      url: '../house/house'
-    })
-  },
-  goToUpload: function () {
-    wx.navigateTo({
-      url: '../upload/upload'
+      url: '../index-detail/index-detail?title=' + that.data.articals[item_index].title + '&link=' + that.data.articals[item_index].link
     })
   },
   onLoad: function () {
     console.log('onLoad')
+    //显示标题菊花
     wx.showNavigationBarLoading()
+    //获取轮播图
     this.getBanners()
     //默认加载第0页
     var curPage = 0
@@ -64,9 +64,7 @@ Page({
     var that = this
     wx.request({
       url: 'http://www.wanandroid.com/article/list/' + artical_pageindex + '/json',
-
       data: {
-        
       },
       method: 'GET',
       header: {

@@ -1,12 +1,4 @@
 /* pages/house/house.wxss */
-.Grid {
-  display: flex;
-  flex: 1;
-  font-size: 12px;
-  margin: 8px
-}
-
-.photo_item{
- 
-  margin: 8px
+.btn{
+  margin-top: 200rpx;
 }

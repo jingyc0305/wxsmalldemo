@@ -1,17 +1,13 @@
 <!--pages/house/house.wxml-->
-<view class='albumlist'>
-  <view class="Grid">
-    <view class="section section_gap" wx:for="{{array}}" wx:for-item="item">
-      <view class="section__ctn">
-        <image class="photo_item" style="width:100px; height:160px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
-        <view class="phototitle">{{item.text}}</view>
-        <image class="photo_item" style="width:100px; height:160px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
-        <view class="phototitle">{{item.text}}</view>
-        <image class="photo_item" style="width:100px; height:160px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
-        <view class="phototitle">{{item.text}}</view>
-        <image class="photo_item" style="width:100px; height:160px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
-        <view class="phototitle">{{item.text}}</view>
-      </view>
-    </view>
-  </view>
+<view>
+
+    <!-- wxp template -->
+    <wxc-tab bind:tabchange="onClick" default-index="{{0}}" component-id="c2" animate="{{true}}" _pid="{{_pid}}">
+        <wxc-tab-panel wx:for="{{tabs}}" wx:for-item="tab" wx:key="{{tab.cid}}" tab-index="{{index}}" component-id="c2" label="{{tab.name}}" _pid="{{_pid}}">
+            {{tab.name}}
+        </wxc-tab-panel>
+
+    </wxc-tab>
+    
 </view>
+<button bindtap='getTabDatas' class='btn'>加载标签数据</button>

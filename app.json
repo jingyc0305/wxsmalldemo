@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/nav/nav",
     "pages/index/index",
     "pages/start/start",
-    "pages/nav/nav",
+    
     "pages/project/project",
     "pages/logs/logs",
     "pages/tool/tool",
@@ -18,8 +19,11 @@
     "onReachBottomDistance": true,
     "backgroundColor": "#69C3AA"
   },
+  "networkTimeout": {
+    "request": 10000
+  },
   "tabBar": {
-    "selectedColor": "#1296db",
+    "selectedColor": "#69C3AA",
     "list": [
       {
         "pagePath": "pages/index/index",

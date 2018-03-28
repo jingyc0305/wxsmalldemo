@@ -9,8 +9,8 @@
   </swiper>
 </view>
 <view class="container artical-list">
-  <block wx:for-items="{{articals}}" wx:for-item="artical" wx:key="*this">
-    <view class="artical-title">
+  <block wx:for-items="{{articals}}" wx:for-item="artical"  wx:key="*this">
+    <view class="artical-item" bindtap='goToArticalDetail' data-index="{{index}}">
       <text class='artical-item-title'>{{artical.title}}</text>
       <view class='artical-subtitle'>
         <!-- <view hidden="{{artical.tags[0].name === '' ? true : false}}">
