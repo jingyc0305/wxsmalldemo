@@ -1,13 +1,21 @@
 <!--pages/house/house.wxml-->
 <view>
 
-    <!-- wxp template -->
-    <wxc-tab bind:tabchange="onClick" default-index="{{0}}" component-id="c2" animate="{{true}}" _pid="{{_pid}}">
-        <wxc-tab-panel wx:for="{{tabs}}" wx:for-item="tab" wx:key="{{tab.cid}}" tab-index="{{index}}" component-id="c2" label="{{tab.name}}" _pid="{{_pid}}">
-            {{tab.name}}
-        </wxc-tab-panel>
+  <!-- wxp template -->
+  <wxc-tab bind:tabchange="onClick" default-index="{{0}}" component-id="c2" animate="{{true}}" _pid="{{_pid}}">
+    <wxc-tab-panel wx:for="{{tabs}}" wx:for-item="tab" wx:key="{{tab.cid}}" tab-index="{{index}}" component-id="c2" label="{{tab.title}}" _pid="{{_pid}}">
+      <!--导航标签对应的列表数据-->
+      <view class="container nav_artical-list">
+        <block wx:for="{{navarticals}}" wx:for-item="nav_artical" wx:key="*this">
+          <view class="nav_artical-item" bindtap='goToNavArticalDetail' data-index="{{index}}">
+            <text class='nav_artical-item-title'>{{nav_artical.title}}</text>             
+          </view>
+        </block>
+      </view>
 
-    </wxc-tab>
-    
+    </wxc-tab-panel>
+
+  </wxc-tab>
+
 </view>
-<button bindtap='getTabDatas' class='btn'>加载标签数据</button>
+<!-- <button bindtap='getTabDatas' class='btn'>加载标签数据</button> -->

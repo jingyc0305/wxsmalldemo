@@ -1,61 +1,20 @@
 <!--pages/upload/upload.wxml-->
- <view class="swiper-container">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{imgUrls}}">
-        <swiper-item>
-          <image src="{{item}}" class="slide-image"/>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
-<view class="container1">
+<view>
 
- <view class="item1 i3">
- 1
- </view>
+  <!-- wxp template -->
+  <wxc-tab bind:tabchange="onClick" default-index="{{0}}" component-id="c3" animate="{{true}}" _pid="{{_pid}}">
+    <wxc-tab-panel wx:for="{{tabs}}" wx:for-item="tab" wx:key="{{tab.cid}}" tab-index="{{index}}" component-id="c3" label="{{tab.title}}" _pid="{{_pid}}">
+      <!--导航标签对应的列表数据-->
+      <view class="container project-list">
+        <block wx:for="{{projects}}" wx:for-item="project" wx:key="*this">
+          <view class="project-item" bindtap='goToProjectArticalDetail' data-index="{{index}}">
+            <text class='project-item-title'>{{project.title}}</text>             
+          </view>
+        </block>
+      </view>
 
-<view class="item1">
- 2
- </view>
+    </wxc-tab-panel>
 
- <view class="item1">
- 3
- </view>
+  </wxc-tab>
 
- <view class="item1">
- 4
- </view>
-  <view class="item1">
- 5
- </view>
-  <view class="item1">
- 6
- </view>
-  <view class="item1">
- 7
- </view>
-  <view class="item1">
- 8
- </view>
-  <view class="item1">
- 9
- </view>
-  <view class="item1">
- 10
- </view>
-  <view class="item1">
- 11
- </view>
-  <view class="item1">
- 12
- </view>
- <view class="item1">
- 13
- </view>
-  <view class="item1">
- 14
- </view>
-  <view class="item1">
- 15
- </view>
 </view>

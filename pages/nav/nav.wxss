@@ -2,3 +2,25 @@
 .btn{
   margin-top: 200rpx;
 }
+.nav_artical-list {
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+}
+.nav_artical-item-title{
+  color: #1E90FF
+}
+.nav_artical-item{
+  border: lightgrey;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 28rpx;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  margin: 15rpx;
+}

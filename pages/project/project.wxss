@@ -1,19 +1,14 @@
 /* pages/upload/upload.wxss */
-.container1{
+.project-list{
     height: 100%;
     width:100%;
-    background-color:beige;
     display: flex;
     flex-flow: wrap row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .item1{
-    height:100rpx;
-    width:100rpx;
-    background-color:cyan;
-    border: 1px solid #fff;
-   flex-shrink: 1;
-}
-.item1 i3{
-  flex-shrink: 0;
+    height:200rpx;
+    width:340rpx;
+    border: 1px solid #000000;
+    margin: 4px;
 }
