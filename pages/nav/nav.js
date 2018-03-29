@@ -24,8 +24,8 @@ Page({
       { title: 'IM即时通讯',cid: '288' },
       { title: 'Bug管理',   cid: '289' },
       { title: '后端云',     cid:'290' },
-      { title: 'WebView内核',cid:'291' },
-      { title: '创意&素材',  cid: '299 '},
+      { title: 'WebView',cid:'291' },
+      { title: '创意素材',  cid: '299 '},
       { title: '互联网统计', cid: '300' },
       { title: '快速开发',   cid: '301'}],
 

@@ -14,16 +14,16 @@
 /* item */
 
 .project-item {
-  border: lightgrey;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 2px 1px 1px #cccccc;
   padding: 8px;
+  margin: 8px;
+  position: relative;
 }
 
 /* item最外层 默认左右结构 图片-描述 */
-
 
 /* item右边 上下结构 使用盒子布局felx */
 
@@ -36,7 +36,7 @@
 /* item右边底部小标题文字  */
 
 .project-item-subtitle-text {
-  margin-left: 8px;
+  margin-left: 10px;
   color: #adadad;
   font-size: 24rpx;
 }
@@ -44,11 +44,13 @@
 .project-item-desc {
   color: #adadad;
   font-size: 24rpx;
+  margin-left: 10px;
 }
 
 .project-item-title {
   color: #333;
   font-size: 28rpx;
+  margin-left: 10px;
 }
 
 /* .project-item-subtitle{
@@ -62,10 +64,30 @@
 .project-item-title-desc-container {
   display: flex;
   flex-wrap: wrap;
-  margin: 8px;
 }
+
 .line {
   width: 100%;
   height: 2rpx;
   background: #adadad;
+}
+
+.weui-loadmore {
+  width: 65%;
+  margin: 1.5em auto;
+  line-height: 1.6em;
+  font-size: 14px;
+  text-align: center;
+}
+
+.weui-loadmore__tips {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.no-more-photos {
+  text-align: center;
+  font-size: 24rpx;
+  padding-bottom: 28rpx;
+  color: #999;
 }

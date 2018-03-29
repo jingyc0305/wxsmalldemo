@@ -28,7 +28,7 @@
           </wxc-flex>
 
         </view>
-        <view class="line"></view>
+        <!-- <view class="line"></view> -->
       </block>
     </view>
     <!-- </wxc-flex> -->

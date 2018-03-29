@@ -16,12 +16,10 @@
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
-   
-    font-size: 28rpx;
 }
 .tab__navbar-item {}
 .tab__navbar-item--default {
-    padding: 5rpx 0
+    padding: 13rpx 0
 }
 .tab__line {
     position: absolute;

@@ -51,7 +51,6 @@ Page({
     this.setData({
       loadingMoreHidden: true
     })
-    this.getArticals(this.data.curPage)
 
   },
   showAddItem: function () {

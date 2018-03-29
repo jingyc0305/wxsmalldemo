@@ -64,14 +64,14 @@ Page({
   onClickNavBar: function (res) {
     var that = this
     if (that.data.currentIndex == res.detail.currentNum) return;
+    
     that.setData({
       currentIndex: res.detail.currentNum,
-      cid:res.data.data.id
+      cid: that.data.tabs[res.detail.currentNum].id,
+      curPage: 1
     })
-    console.log("currSelectedTabIndex=" + that.data.currentIndex)
-    console.log("currSelectedCid=" + that.data.cid)
-    if (!that.data.projects[that.data.currentIndex].length)
-      that.getProjectDatas(that.data.curPage);
+    console.log("that.data.currentIndex=" + that.data.currentIndex)
+    that.getProjectDatas(that.data.curPage);
   },
  
   //minui wxc-tab切换事件响应============
@@ -81,8 +81,11 @@ Page({
   //   this.getProjectDatas(e.detail.key)
   // },
   //加载对应标签下的项目数据 分页加载更多
+  
   getProjectDatas: function (project_pageindex) {
     var that = this
+    console.log('project_pageindex=' + project_pageindex)
+    console.log('cid=' + that.data.cid)
     wx.request({
       url: 'http://www.wanandroid.com/project/list/' + project_pageindex + '/json',
       data: {
@@ -94,8 +97,9 @@ Page({
       },
       success: function (res) {
         that.setData({
+          perPageSize: res.data.data.size,
           curPage: res.data.data.curPage,
-          projects: res.data.data.datas
+          pageCount: res.data.data.pageCount
         })
         var projectsTemp = that.data.projects
         if (that.data.curPage == 1) {
@@ -106,13 +110,15 @@ Page({
           console.log('没有更多了')
           that.setData({
             projects: projectsTemp.concat(projects),
-            loadingMoreHidden: false
+            loadingMoreHidden: false,
+            isHideLoadMore:true
           })
         } else {
-          console.log('有更多可加载')
+          console.log('加载更多')
           that.setData({
             projects: projectsTemp.concat(projects),
             loadingMoreHidden: true,
+            isHideLoadMore:false,
             curPage: that.data.curPage + 1
           })
         }
@@ -136,19 +142,6 @@ Page({
         })
       }
     })
-  },
-  onReachBottom: function () {
-    console.log('加载更多')
-    if (!this.data.loadingMoreHidden) {
-
-    } else {
-      this.getProjectTabs(this.data.curPage)
-    }
-    this.setData({
-      loadingMoreHidden: true
-    })
-    this.getProjectTabs(this.data.curPage)
-
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -189,7 +182,18 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    if (!this.data.loadingMoreHidden) {
+      this.setData({
+        loadingMoreHidden: false
+      })
+    } else {    
+      console.log('getProjectDatas' + this.data.curPage)
+      this.getProjectDatas(this.data.curPage)
+      this.setData({
+        loadingMoreHidden: true
+      })
+    }
+    
   },
 
   /**
