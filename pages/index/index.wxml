@@ -23,7 +23,7 @@
         </view>
         <view class='category'>
           <text class='artical-item-desc'>分类: </text>
-          <text class='artical-item-desc_content'>{{artical.superChapterName}}/{{artical.chapterName}}</text>
+          <wxc-elip class='artical-item-desc_content' line='1'>{{artical.superChapterName}}/{{artical.chapterName}}</wxc-elip>
         </view>
         <view class='category'>
           <text class='artical-item-desc'>时间: </text>

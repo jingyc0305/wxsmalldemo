@@ -1,20 +1,52 @@
 <!--pages/upload/upload.wxml-->
-<view>
+<view class='project'>
+  <wantab tablist="{{tabs}}" bind:changeTab="onClickNavBar" currentTab="{{currentIndex}}">
+    <!--导航标签对应的列表数据-->
+    <!-- <wxc-flex class="warp" dir="{{dir}}"> -->
+    <view class="project-list">
+      <block wx:for="{{projects}}" wx:for-item="project" wx:key="*this">
+        <view class="project-item" bindtap='goToProjectArticalDetail' data-index="{{index}}">
+          <wxc-flex class="wrap">
+            <!--item左边图片-->
+            <view class='item side'>
+              <image src='{{project.envelopePic}}' mode='{{mode}}' style="width: 90px; height: 160px;"></image>
+            </view>
+            <!--item右边-->
+            <view class='item main'>
+              <!--project-item-right-->
+              <view class='project-item-title-desc-container'>
+                <wxc-elip class='project-item-title' line="2">{{project.title}}</wxc-elip>
+                <wxc-elip class='project-item-desc' line="4">{{project.desc}}</wxc-elip>
+              </view>
+              <view class='project-item-subtitle'>
+                <!--日期、作者...-->
+                <text class='project-item-subtitle-text'>{{project.niceDate}}</text>
+                <text class='project-item-subtitle-text'>{{project.author}}</text>
+                <wxc-icon class='project-item-subtitle-text' type="{{icon_like}}" size='28'></wxc-icon>
+              </view>
+            </view>
+          </wxc-flex>
 
-  <!-- wxp template -->
-  <wxc-tab bind:tabchange="onClick" default-index="{{0}}" component-id="c3" animate="{{true}}" _pid="{{_pid}}">
-    <wxc-tab-panel wx:for="{{tabs}}" wx:for-item="tab" wx:key="{{tab.cid}}" tab-index="{{index}}" component-id="c3" label="{{tab.title}}" _pid="{{_pid}}">
-      <!--导航标签对应的列表数据-->
-      <view class="container project-list">
-        <block wx:for="{{projects}}" wx:for-item="project" wx:key="*this">
-          <view class="project-item" bindtap='goToProjectArticalDetail' data-index="{{index}}">
-            <text class='project-item-title'>{{project.title}}</text>             
-          </view>
-        </block>
-      </view>
-
-    </wxc-tab-panel>
-
-  </wxc-tab>
-
+        </view>
+        <view class="line"></view>
+      </block>
+    </view>
+    <!-- </wxc-flex> -->
+  </wantab>
 </view>
+<view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+  <view class="weui-loading"></view>
+  <view class="weui-loadmore__tips">正在加载</view>
+</view>
+<view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-photos">没有更多啦</view>
+
+
+
+
+<!--@miui/wxc-tab 由于有bug暂时不用了-->
+<!-- <view>
+  <wxc-tab bind:tabchange="onClick" default-index="{{0}}" component-id="c3" animate="{{true}}" _pid="{{_pid}}">
+    <wxc-tab-panel wx:for="{{tabs}}" wx:for-item="tab" wx:key="{{tab.cid}}" tab-index="{{index}}" component-id="c3" label="{{tab.title}}" _pid="{{_pid}}">    
+    </wxc-tab-panel>
+  </wxc-tab>
+</view> -->

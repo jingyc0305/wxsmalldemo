@@ -16,7 +16,7 @@
     "navigationBarBackgroundColor": "#69C3AA",
     "navigationBarTitleText": "玩安卓",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true,
+    "enablePullDownRefresh": false,
     "onReachBottomDistance": true,
     "backgroundColor": "#69C3AA"
   },

@@ -3,9 +3,7 @@ Page({
 
   /**
    * 页面的初始数据
-   */
-  data: {
-    tabs: [{ title: '完整项目', cid: '294' },
+   * { title: '完整项目', cid: '294' },
     { title: '下拉刷新', cid: '310' },
     { title: '富文本', cid: '312' },
     { title: '列表动效', cid: '314' },
@@ -22,21 +20,140 @@ Page({
     { title: '快应用', cid: '337' },
     { title: '日历', cid: '338' },
     { title: 'K线图', cid: '339' },
-    { title: '硬件相关', cid: '340' }],
-   
+    { title: '硬件相关', cid: '340' }
+   */
+  data: {
+    tabs: [],
+    //图片加载模式
+    mode: 'aspectFill',
+    //数据源 项目列表
+    projects:[],
+    //当前页码
+    curPage: 1,
+    perPageSize: 15,
+    pageCount: 2,
+    isHideLoadMore: false,
+    loadingMoreHidden: true,
+    //icon
+    icon_like:'star',
+    //自定义tab 当前索引
+    currentIndex:0,
+    windowHeight: '',
+    //项目分类id
+    cid:'294',
+    //@minui/wxc-flex 垂直正序排列
+    dir:'top'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var curPage = 1
+    this.getProjectTabs()
+    //默认加载第1页
+    this.getProjectDatas(curPage)
+    ////自定义tab 初始化
+    var systemInfo = wx.getSystemInfoSync()
+    this.setData({
+      windowHeight: systemInfo.windowHeight,
+      currentIndex: options.id ? options.id : 0
+    })
   },
+  // 自定义 tab 点击切换 
+  onClickNavBar: function (res) {
+    var that = this
+    if (that.data.currentIndex == res.detail.currentNum) return;
+    that.setData({
+      currentIndex: res.detail.currentNum,
+      cid:res.data.data.id
+    })
+    console.log("currSelectedTabIndex=" + that.data.currentIndex)
+    console.log("currSelectedCid=" + that.data.cid)
+    if (!that.data.projects[that.data.currentIndex].length)
+      that.getProjectDatas(that.data.curPage);
+  },
+ 
+  //minui wxc-tab切换事件响应============
+  // onClick: function (e) {
+  //   var that = this
+  //   console.log("you selected:" + e.detail.key)
+  //   this.getProjectDatas(e.detail.key)
+  // },
+  //加载对应标签下的项目数据 分页加载更多
+  getProjectDatas: function (project_pageindex) {
+    var that = this
+    wx.request({
+      url: 'http://www.wanandroid.com/project/list/' + project_pageindex + '/json',
+      data: {
+        cid:that.data.cid
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        that.setData({
+          curPage: res.data.data.curPage,
+          projects: res.data.data.datas
+        })
+        var projectsTemp = that.data.projects
+        if (that.data.curPage == 1) {
+          projectsTemp = []
+        }
+        var projects = res.data.data.datas
+        if (projects.length < that.data.perPageSize) {
+          console.log('没有更多了')
+          that.setData({
+            projects: projectsTemp.concat(projects),
+            loadingMoreHidden: false
+          })
+        } else {
+          console.log('有更多可加载')
+          that.setData({
+            projects: projectsTemp.concat(projects),
+            loadingMoreHidden: true,
+            curPage: that.data.curPage + 1
+          })
+        }
+      }
+    })
+  },
+  //获取项目tab标签数据
+  getProjectTabs: function(){
+    var that = this
+    wx.request({
+      url: 'http://www.wanandroid.com/project/tree/json',
+      data: {
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        that.setData({
+          tabs: res.data.data
+        })
+      }
+    })
+  },
+  onReachBottom: function () {
+    console.log('加载更多')
+    if (!this.data.loadingMoreHidden) {
 
+    } else {
+      this.getProjectTabs(this.data.curPage)
+    }
+    this.setData({
+      loadingMoreHidden: true
+    })
+    this.getProjectTabs(this.data.curPage)
+
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function (project_pageindex) {
   
   },
 

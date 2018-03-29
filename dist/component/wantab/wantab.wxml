@@ -1,0 +1,11 @@
+<!--dist/wantab.wxml-->
+<!-- 自定义tab标签组件-->
+<!-- 标题列表-->
+<scroll-view scroll-x="true" class="scroll-view-x" wx:if="{{!tabtype || tabtype==2}}">
+  <view class="scroll-view-item" wx:for="{{tablist}}" wx:key="*this">
+    <view class="{{currentTab==(index) ? 'on' : ''}}" bindtap="onClickNavBar" data-current="{{index}}">{{ !tabname ? item.name : item[tabname].name }}</view>
+  </view>
+</scroll-view>
+<!--内容列表-->
+<slot>
+</slot>

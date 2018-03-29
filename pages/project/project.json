@@ -3,6 +3,11 @@
   "usingComponents": {
     "wxc-tab": "../../dist/packages/@minui/wxc-tab/dist/index",
     "wxc-tab-panel": "../../dist/packages/@minui/wxc-tab/dist/panel",
-    "wxc-tab-label": "../../dist/packages/@minui/wxc-tab/dist/label"
-  }
+    "wxc-tab-label": "../../dist/packages/@minui/wxc-tab/dist/label",
+    "wxc-icon": "../../dist/packages/@minui/wxc-icon/dist/index",
+    "wxc-flex": "../../dist/packages/@minui/wxc-flex/dist/index",
+    "wxc-elip": "../../dist/packages/@minui/wxc-elip/dist/index",
+    "wantab":"../../dist/component/wantab/wantab"
+  },
+  "onReachBottomDistance": true
 }
