@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "wantab": "../../dist/component/wantab/wantab"
+  }
+}

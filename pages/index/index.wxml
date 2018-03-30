@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="swiper-container">
   <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}">
+    <block wx:for="{{imgUrls}}" wx:key="*this">
       <swiper-item>
         <image src="{{item.imagePath}}" mode="{{item.mode}}" class="slide-image" />
       </swiper-item>
@@ -9,30 +9,27 @@
   </swiper>
 </view>
 <view class="container artical-list">
-  <block wx:for-items="{{articals}}" wx:for-item="artical"  wx:key="*this">
+  <block wx:for-items="{{articals}}" wx:for-item="artical" wx:key="*this">
     <view class="artical-item" bindtap='goToArticalDetail' data-index="{{index}}">
       <text class='artical-item-title'>{{artical.title}}</text>
-      <view class='artical-subtitle'>
-        <!-- <view hidden="{{artical.tags[0].name === '' ? true : false}}">
-          <wxc-label class="label">{{artical.tags[0].name}}</wxc-label>
-        </view> -->
+      <wxc-flex class="warp" main="{{item_content_dir}}">
+        <wxc-flex class="wrap" dir="{{dir}}">
+          <view>
+            <text class='artical-item-desc'>作者: </text>
+            <text class='artical-item-desc_content'>{{artical.author}}</text>
+          </view>
+          <view class='category'>
+            <text class='artical-item-desc'>分类: </text>
+            <text class='artical-item-desc_content'>{{artical.superChapterName}}/{{artical.chapterName}}</text>
+          </view>
+          <view class='category'>
+            <text class='artical-item-desc'>时间: </text>
+            <text class='artical-item-desc'>{{artical.niceDate}}</text>
+          </view>
+        </wxc-flex>
+        <image src="{{likesrc}}" style="width: 28px; height: 28px;" mode="{{mode}}" bindtap='onClickAddLike' ></image>
+      </wxc-flex>
 
-        <view>
-          <text class='artical-item-desc'>作者: </text>
-          <text class='artical-item-desc_content'>{{artical.author}}</text>
-        </view>
-        <view class='category'>
-          <text class='artical-item-desc'>分类: </text>
-          <wxc-elip class='artical-item-desc_content' line='1'>{{artical.superChapterName}}/{{artical.chapterName}}</wxc-elip>
-        </view>
-        <view class='category'>
-          <text class='artical-item-desc'>时间: </text>
-          <text class='artical-item-desc'>{{artical.niceDate}}</text>
-        </view>
-        <!-- <wxc-label class="label" type="fill" type-color="#747bb1">{{artical.author}}</wxc-label>
-        <wxc-label class="label" type="fill" type-color="#ffe8ee" text-color="#ff5577">分类:{{artical.superChapterName}}</wxc-label>
-        <wxc-label class="label" type="fill" type-color="#ffe8ee" text-color="#ff5577">时间:{{artical.niceDate}}</wxc-label> -->
-      </view>
     </view>
 
   </block>

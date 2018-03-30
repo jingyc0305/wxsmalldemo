@@ -1,0 +1,38 @@
+<!--pages/hierarchy-details/hierarchy-details.wxml-->
+<view class='hierarchy_child'>
+  <wantab tablist="{{tabs}}" bind:changeTab="onClickNavBar" currentTab="{{currentIndex}}">
+    <!--导航标签对应的列表数据-->
+    <view class="container hierarchy_child_artical-list">
+      <block wx:for-items="{{hierarchy_childarticals}}" wx:for-item="hierarchy_child_artical" wx:key="*this">
+        <view class="hierarchy_child_artical-item" bindtap='goToArticalDetail' data-index="{{index}}">
+          <text class='hierarchy_child_artical-item-title'>{{artical.title}}</text>
+          <wxc-flex class="warp" main="{{item_content_dir}}">
+            <wxc-flex class="wrap" dir="{{dir}}">
+              <view>
+                <text class='artical-item-desc'>作者: </text>
+                <text class='artical-item-desc_content'>{{artical.author}}</text>
+              </view>
+              <view class='category'>
+                <text class='artical-item-desc'>分类: </text>
+                <text class='artical-item-desc_content'>{{artical.superChapterName}}/{{artical.chapterName}}</text>
+              </view>
+              <view class='category'>
+                <text class='artical-item-desc'>时间: </text>
+                <text class='artical-item-desc'>{{artical.niceDate}}</text>
+              </view>
+            </wxc-flex>
+            <image src="{{likesrc}}" style="width: 28px; height: 28px;" mode="{{mode}}" bindtap='onClickAddLike'></image>
+          </wxc-flex>
+
+        </view>
+
+      </block>
+    </view>
+
+  </wantab>
+</view>
+<view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+  <view class="weui-loading"></view>
+  <view class="weui-loadmore__tips">正在加载</view>
+</view>
+<view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-photos">没有更多啦</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "体系",
+  "usingComponents": {
+    "wxc-label": "../../dist/packages/@minui/wxc-label/dist/index",
+    "wxc-flex": "../../dist/packages/@minui/wxc-flex/dist/index"
+  }
+}

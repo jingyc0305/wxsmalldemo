@@ -14,7 +14,10 @@ Page({
     perPageSize: 20,
     pageCount: 59,
     isHideLoadMore: false,
-    loadingMoreHidden: true
+    loadingMoreHidden: true,
+    dir:'top',
+    item_content_dir:'between',
+    likesrc:'../images/index/like_normal.png'
   },
   //进入文章详细页面
   goToArticalDetail: function (e) {
@@ -117,6 +120,10 @@ Page({
         })
       }
     })
+  },
+  //添加文章到我的收藏
+  onClickAddLike: function(){
+    
   }
 
 })

@@ -144,9 +144,10 @@
   font-size: 22rpx;
   color: #666666;
 }
-.category{
-  padding-left: 8px;
-}
+/* .category{
+
+  margin-left: 8px;
+} */
 /*  加载更多   */
 .weui-loading {
   margin: 0 5px;

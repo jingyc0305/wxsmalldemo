@@ -1,15 +1,16 @@
 {
   "pages": [
+    
+    "pages/hierarchy/hierarchy",
     "pages/project/project",
     "pages/nav/nav",
     "pages/index/index",
     "pages/start/start",
-    
-    
     "pages/logs/logs",
-    "pages/tool/tool",
     "pages/mine/mine",
-    "pages/index-detail/index-detail"
+    "pages/index-detail/index-detail",
+    "pages/hierarchy-details/hierarchy-details"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -45,8 +46,8 @@
         "selectedIconPath": "pages/images/nav/project_select.png"
       },
       {
-        "pagePath": "pages/tool/tool",
-        "text": "工具",
+        "pagePath": "pages/hierarchy/hierarchy",
+        "text": "体系",
         "iconPath": "pages/images/nav/tool_normal.png",
         "selectedIconPath": "pages/images/nav/tool_select.png"
       },

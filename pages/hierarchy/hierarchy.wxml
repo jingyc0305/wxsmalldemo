@@ -1,0 +1,26 @@
+<!--pages/welcom/welcom.wxml-->
+<view class="hierarchy">
+  <view class="hierarchy-list">
+    <block wx:for="{{hierarchys}}" wx:for-item="hierarchy" wx:key="id">
+      <view class='hierarchys-item-parent'>
+        <view class="hierarchy-item" bindtap='goToHierarchyDetail' data-index="{{index}}">
+          <view>
+            <text>{{hierarchy.name}}</text>
+          </view>
+          <view class='hierarchy-child-grid'>
+            <block wx:for="{{hierarchy.children}}" wx:for-item="hierarchy_child" wx:key="id">
+              <view class='hierarchy_child-item' data-index="{{index}}">
+                <wxc-label class="label" type="fill" type-color="#69C3AA">{{hierarchy_child.name}}</wxc-label>
+              </view>
+            </block>
+          </view>
+        </view>
+        <!--右边的icon >-->
+        <view>
+        <image src="{{enter_nextpage_img_src}}" style="width: 28px; height: 28px;" mode="{{mode}}"></image>
+        </view>
+      </view>
+
+    </block>
+  </view>
+</view>

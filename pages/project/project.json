@@ -8,6 +8,5 @@
     "wxc-flex": "../../dist/packages/@minui/wxc-flex/dist/index",
     "wxc-elip": "../../dist/packages/@minui/wxc-elip/dist/index",
     "wantab":"../../dist/component/wantab/wantab"
-  },
-  "onReachBottomDistance": true
+  }
 }

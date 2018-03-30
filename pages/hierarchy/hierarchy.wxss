@@ -1,0 +1,37 @@
+/* pages/welcom/welcom.wxss */
+.hierarchy-list {
+  height: 100%;
+  width: 100%;
+  margin-top: 8px;
+}
+/* item */
+.hierarchy-item {
+  /* border: 2px solid #fff;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 2px 1px 1px #cccccc;
+  padding: 8px;
+  margin: 8px;
+  position: relative; */
+
+}
+.label {
+    margin-right: 20rpx;
+}
+.hierarchy-child-grid{
+  display: flex;
+  flex-wrap: wrap;
+}
+.hierarchys-item-parent{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 2px 1px 1px #cccccc;
+  padding: 8px;
+  margin: 8px;
+  position: relative;
+}
